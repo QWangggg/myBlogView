@@ -33,11 +33,12 @@ export default {
     },
     methods: {
         login() {
-            this.$axios.post("/api/login", this.user).then(res => {
+            this.$axios.post("/api/auth/login", this.user).then(res => {
                 if (!res.data.success)
                     return this.$message.error(res.data.data);
                 this.$message.success('登录成功')
                 this.$router.push("/");
+                // window.location.reload()
             });
         }
     }

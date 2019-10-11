@@ -54,7 +54,7 @@ export default {
     },
     methods: {
         register() {
-            this.$axios.post("api/register", this.user).then(res => {
+            this.$axios.post("api/auth/register", this.user).then(res => {
                 if (!res.data.success) return alert(res.data.data);
                 this.$router.push("/login");
             });

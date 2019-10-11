@@ -42,6 +42,5 @@ export default {
 
 .el-main {
     color: #333;
-    margin: 0 auto;
 }
 </style>

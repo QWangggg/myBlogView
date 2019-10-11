@@ -13,6 +13,15 @@ const routes = [{
         import ('@/components/index'),
     hidden: true,
     children: [{
+        path: '/',
+        name: 'aritcle-list',
+        meta: {
+            title: '主页'
+        },
+        component: () =>
+            import ('@/components/article-list/article-list'),
+        hidden: true
+    }, {
         path: '/login',
         name: 'login',
         meta: {
@@ -30,7 +39,16 @@ const routes = [{
         component: () =>
             import ('@/components/register'),
         hidden: true
-    }, ]
+    }, {
+        path: '/POST',
+        name: 'post',
+        meta: {
+            title: '发表'
+        },
+        component: () =>
+            import ('@/components/post/post'),
+        hidden: true
+    }]
 }, {
     path: '/HOME',
     hidden: true,
