@@ -39,10 +39,6 @@ export default {
                 this.$router.push(item.name);
             }
         }
-    },
-    beforeRouteEnter (to, from, next) {
-        console.log(from)
-        next()
     }
 };
 </script>

@@ -5,6 +5,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import router from './router/router'
 
+// markdown编辑器
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
+
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
@@ -21,8 +26,8 @@ axios.interceptors.response.use(response => { // 响应拦截
             return response
         case '501':
             Vue.prototype.$message.error(response.data.error)
+            router.push('/login')
             break;
-
     }
 })
 

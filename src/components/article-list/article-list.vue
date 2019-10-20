@@ -9,7 +9,7 @@
                 </span>
                 <span class="posttime">{{ item.time }}</span>
             </div>
-            <div class="content">{{ item.content }}</div>
+            <div class="content" v-html="item.content"></div>
         </div>
     </div>
 </template>
