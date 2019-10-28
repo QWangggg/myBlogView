@@ -22,13 +22,16 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => { // 响应拦截
     switch (response.data.code) {
-        case '200':
-            return response
         case '501':
             Vue.prototype.$message.error(response.data.error)
             router.push('/login')
             break;
+        default:
+            return response
     }
+}, error => {
+    window.console.log(error)
+    router.push('/login')
 })
 
 new Vue({

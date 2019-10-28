@@ -35,8 +35,10 @@ export default {
     },
     methods: {
         submit() {
-            this.post.name = localStorage.getItem("username");
-            this.$axios.post("/api/post", this.post).then(res => {
+            let data = Object.assign({}, this.post)
+            data.content = this.$refs.md.d_render // 将markdown转化为html
+            data.name = localStorage.getItem("username");
+            this.$axios.post("/api/post", data).then(res => {
                 if (!res.data.success) return;
                 this.$message.success(res.data.data);
                 this.$router.push("/");
@@ -52,10 +54,13 @@ export default {
             formdata.append("image", $file);
             this.uploadImgNow = true;
             this.$axios.post("/api/upload", formdata, {headers: { "Content-Type": "multipart / form-data" }})
-                .then(url => {
-                    // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
-                    // $vm.$img2Url 详情见本页末尾
-                    this.$refs.md.$img2Url(pos, url);
+                .then(res => {
+                    if (res.data.success) {
+                        let url = 'http://localhost:3000/' + res.data.data[0].path
+                        // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+                        // $vm.$img2Url 详情见本页末尾
+                        this.$refs.md.$img2Url(pos, url);
+                    }
                 })
                 .finally(() => {
                     this.uploadImgNow = false;

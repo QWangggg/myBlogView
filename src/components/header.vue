@@ -12,7 +12,11 @@ export default {
         }
     },
     created(){
-        this.title = this.$route.meta.title
+        if (this.$route.meta && this.$route.meta.title) {
+            this.title = this.$route.meta.title
+        } else {
+            this.$emit('hidden-header', true)
+        }
     },
     watch: {
         $route(newV) {

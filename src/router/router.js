@@ -48,6 +48,12 @@ const routes = [{
         component: () =>
             import ('@/components/post/post'),
         hidden: true
+    }, {
+        path: '/article',
+        name: 'article',
+        hidden: true,
+        component: () =>
+            import ('@/components/article-list/article'),
     }]
 }, {
     path: '/HOME',

@@ -5,7 +5,7 @@
         </el-aside>
         <el-container>
             <el-header height="80px">
-                <Header></Header>
+                <Header v-if="condition" :hidden-header="(value) => condition=value"></Header>
             </el-header>
             <el-main>
                 <router-view></router-view>
@@ -21,6 +21,11 @@ export default {
     components: {
         Header,
         Aside
+    },
+    data() {
+        return {
+            condition: false // header组件是否显示
+        }
     },
     created() {
         },

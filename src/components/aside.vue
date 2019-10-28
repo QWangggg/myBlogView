@@ -36,7 +36,7 @@ export default {
         },
         route(item) {
             if (item.name.toUpperCase() !== this.$route.name.toUpperCase()) {
-                this.$router.push(item.name);
+                this.$router.push({ path: item.name });
             }
         }
     }
